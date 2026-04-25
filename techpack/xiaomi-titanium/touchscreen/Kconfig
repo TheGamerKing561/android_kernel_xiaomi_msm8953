@@ -1,0 +1,64 @@
+source "techpack/xiaomi-titanium/touchscreen/focaltech_touch/Kconfig"
+source "techpack/xiaomi-titanium/touchscreen/td4310_e7/Kconfig"
+source "techpack/xiaomi-titanium/touchscreen/td4310_lansi_e7/Kconfig"
+source "techpack/xiaomi-titanium/touchscreen/gt9xx/Kconfig"
+source "techpack/xiaomi-titanium/touchscreen/gt917d/Kconfig"
+source "techpack/xiaomi-titanium/touchscreen/gt917d_e6/Kconfig"
+source "techpack/xiaomi-titanium/touchscreen/synaptics_dsx/Kconfig"
+source "techpack/xiaomi-titanium/touchscreen/nt36xxx/Kconfig"
+source "techpack/xiaomi-titanium/touchscreen/gt9xx_v2.4/Kconfig"
+
+config TOUCHSCREEN_TD4310_E7
+	tristate "synaptics touchscreens"
+	depends on I2C
+	help
+	  Say Y here if you have a ist3038c touchscreen.
+	  Ft5x06 controllers are multi touch controllers which can
+	  report 5 touches at a time.
+
+	  If unsure, say N.
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called ist3038c_ts.
+
+config TOUCHSCREEN_TD4310_LANSI_E7
+	tristate "synaptics touchscreens"
+	depends on I2C
+	help
+	  Say Y here if you have a ist3038c touchscreen.
+	  Ft5x06 controllers are multi touch controllers which can
+	  report 5 touches at a time.
+
+	  If unsure, say N.
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called ist3038c_ts.
+
+config TOUCHSCREEN_IST3038C
+	tristate "imagies touchscreens"
+	depends on I2C
+	help
+	  Say Y here if you have a ist3038c touchscreen.
+	  Ft5x06 controllers are multi touch controllers which can
+	  report 5 touches at a time.
+
+	  If unsure, say N.
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called ist3038c_ts.
+
+config TOUCHSCREEN_GT9XX_v24
+	bool "Goodix touchpanel GT9xx_v24 series"
+	depends on I2C
+	help
+	  Say Y here if you have a Goodix GT9xx_v24 touchscreen.
+	  Gt9xx controllers are multi touch controllers which can
+	  report 5 touches at a time.
+
+          If unsure, say N.
+
+config TOUCHSCREEN_SYSCTL_MI8953
+ 	bool "Sysctl control interface for Xiaomi MSM8953 touchscreens"
+ 	help
+ 	  Say Y here to enable sysctl control interface for Xiaomi MSM8953 touchscreens
+
