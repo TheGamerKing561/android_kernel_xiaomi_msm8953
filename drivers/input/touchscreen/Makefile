@@ -38,7 +38,6 @@ obj-$(CONFIG_TOUCHSCREEN_ELAN)		+= elants_i2c.o
 obj-$(CONFIG_TOUCHSCREEN_ELO)		+= elo.o
 obj-$(CONFIG_TOUCHSCREEN_EGALAX)	+= egalax_ts.o
 obj-$(CONFIG_TOUCHSCREEN_EGALAX_SERIAL)	+= egalax_ts_serial.o
-obj-$(CONFIG_TOUCHSCREEN_FT5X06)	+= ft5x06_ts.o
 obj-$(CONFIG_TOUCHSCREEN_FUJITSU)	+= fujitsu_ts.o
 obj-$(CONFIG_TOUCHSCREEN_GOODIX)	+= goodix.o
 obj-$(CONFIG_TOUCHSCREEN_GEN_VKEYS)	+= gen_vkeys.o
@@ -104,7 +103,6 @@ obj-$(CONFIG_TOUCHSCREEN_TPS6507X)	+= tps6507x-ts.o
 obj-$(CONFIG_TOUCHSCREEN_ZFORCE)	+= zforce_ts.o
 obj-$(CONFIG_TOUCHSCREEN_COLIBRI_VF50)	+= colibri-vf50-ts.o
 obj-$(CONFIG_TOUCHSCREEN_ROHM_BU21023)	+= rohm_bu21023.o
-obj-$(CONFIG_TOUCHSCREEN_FTS)		+= focaltech_touch/
 obj-$(CONFIG_TOUCHSCREEN_GT9XX_v28)		+= gt9xx_v2.8/
 obj-$(CONFIG_TOUCHSCREEN_HIMAX_CHIPSET)	+= hxchipset/
 obj-$(CONFIG_TOUCHSCREEN_EKTF3XXX_CHIPSET) += ektf3xxx/
@@ -134,5 +132,5 @@ obj-$(CONFIG_TOUCHSCREEN_TD4310_LANSI_E7)	+= td4310_lansi_e7/
 obj-$(CONFIG_TOUCHSCREEN_VITURALSAR_E7)	+= vituralsar_e7/
 
 
-obj-$(CONFIG_TOUCHSCREEN_SYSCTL_MI8953) += ts_sysctl.obj
 obj-$(CONFIG_TOUCHSCREEN_FTS_MI8953) += focaltech_touch/
+obj-$(CONFIG_TOUCHSCREEN_SYSCTL_MI8953) += ts_sysctl.o
