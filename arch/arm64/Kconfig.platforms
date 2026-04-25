@@ -354,4 +354,11 @@ config ARCH_ZYNQMP
 	help
 	  This enables support for Xilinx ZynqMP Family
 
+config MACH_XIAOMI_TITANIUM
+	bool  "XIAOMI platform"
+	depends on ARCH_MSM8953
+	help
+	  Support for the Xiaomi Titanium platform
+	  which is based on QCOM TITANIUM chipset.
+
 endmenu
