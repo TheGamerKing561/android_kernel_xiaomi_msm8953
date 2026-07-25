@@ -1715,7 +1715,7 @@ static int fts_input_report_key(struct fts_ts_data *data, int index)
 		return -EINVAL;
 	}
 
-#if IS_ENABLED(CONFIG_TOUCHSCREEN_SYSCTL_MI8953)
+#if IS_ENABLED(CONFIG_TOUCHSCREEN_PROCFS_MI8953)
 	if (data->disable_keys) {
 		return -EINVAL;
 	}
@@ -2857,7 +2857,7 @@ out:
 }
 #endif
 
-#if IS_ENABLED(CONFIG_TOUCHSCREEN_SYSCTL_MI8953)
+#if IS_ENABLED(CONFIG_TOUCHSCREEN_PROCFS_MI8953)
 static int fts_mi8953_ops_disable_keys(struct device *dev, bool disable)
 {
  	struct fts_ts_data *ts_data = fts_data;
@@ -3127,7 +3127,7 @@ static int fts_ts_probe_entry(struct fts_ts_data *ts_data)
 	}
 #endif
 
-#if IS_ENABLED(CONFIG_TOUCHSCREEN_SYSCTL_MI8953)
+#if IS_ENABLED(CONFIG_TOUCHSCREEN_PROCFS_MI8953)
  	fts_mi8953_ts_ops.dev = ts_data->dev;
  	xiaomi_msm8953_touchscreen_register_operations(&fts_mi8953_ts_ops);
 #endif

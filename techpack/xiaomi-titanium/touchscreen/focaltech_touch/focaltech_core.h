@@ -315,7 +315,7 @@ struct fts_ts_data {
 	atomic_t trusted_touch_mode;
 #endif
 	atomic_t delayed_vm_probe_pending;
-#if IS_ENABLED(CONFIG_TOUCHSCREEN_SYSCTL_MI8953)
+#if IS_ENABLED(CONFIG_TOUCHSCREEN_PROCFS_MI8953)
 	bool disable_keys;
 #endif
 };
@@ -342,7 +342,7 @@ int fts_bus_init(struct fts_ts_data *ts_data);
 int fts_bus_exit(struct fts_ts_data *ts_data);
 
 /* Gesture functions */
-#if IS_ENABLED(CONFIG_TOUCHSCREEN_SYSCTL_MI8953)
+#if IS_ENABLED(CONFIG_TOUCHSCREEN_PROCFS_MI8953)
 int fts_mi8953_ops_enable_dt2w(struct device *dev, bool enable);
 #endif
 int fts_gesture_init(struct fts_ts_data *ts_data);

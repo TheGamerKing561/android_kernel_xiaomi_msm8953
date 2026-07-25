@@ -9,4 +9,4 @@ obj-$(CONFIG_TOUCHSCREEN_NT36XXX) += nt36xxx/
 obj-$(CONFIG_TOUCHSCREEN_IST3038C)	+= ist3038c/
 obj-$(CONFIG_TOUCHSCREEN_GT9XX_v24)	+= gt9xx_v2.4/
 obj-$(CONFIG_MACH_XIAOMI_YSL)		+= lct_tp_fm_info_e6.o
-obj-$(CONFIG_TOUCHSCREEN_SYSCTL_MI8953) += ts_sysctl.o
+obj-$(CONFIG_TOUCHSCREEN_PROCFS_MI8953) += ts_procfs.o
