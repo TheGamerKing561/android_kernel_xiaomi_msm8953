@@ -100,7 +100,7 @@ static struct fts_gesture_st fts_gesture_data;
 /*****************************************************************************
 * Static function prototypes
 *****************************************************************************/
-#if IS_ENABLED(CONFIG_TOUCHSCREEN_SYSCTL_MI8953)
+#if IS_ENABLED(CONFIG_TOUCHSCREEN_PROCFS_MI8953)
 int fts_mi8953_ops_enable_dt2w(struct device *dev, bool enable)
 {
  	struct fts_ts_data *ts_data = fts_data;
