@@ -360,6 +360,12 @@ void fts_release_apk_debug_channel(struct fts_ts_data *);
 int fts_create_sysfs(struct fts_ts_data *ts_data);
 int fts_remove_sysfs(struct fts_ts_data *ts_data);
 
+/* Mido sysfs functions for /proc/touchpanel */
+#if IS_ENABLED(CONFIG_TOUCHSCREEN_SYSCTL_MI8953)
+int fts_create_mido_sysfs(struct i2c_client *client);
+void fts_remove_mido_sysfs(struct i2c_client *client);
+#endif
+
 /* ESD */
 #if FTS_ESDCHECK_EN
 int fts_esdcheck_init(struct fts_ts_data *ts_data);
