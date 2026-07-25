@@ -57,8 +57,8 @@ config TOUCHSCREEN_GT9XX_v24
 
           If unsure, say N.
 
-config TOUCHSCREEN_SYSCTL_MI8953
- 	bool "Sysctl control interface for Xiaomi MSM8953 touchscreens"
+config TOUCHSCREEN_PROCFS_MI8953
+ 	bool "Procfs control interface for Xiaomi MSM8953 touchscreens"
  	help
  	  Say Y here to enable sysctl control interface for Xiaomi MSM8953 touchscreens
 

@@ -1,7 +1,7 @@
 #ifndef _XIAOMI_MSM8953_TOUCHSCREEN_H
 #define _XIAOMI_MSM8953_TOUCHSCREEN_H
 
-#if IS_ENABLED(CONFIG_TOUCHSCREEN_SYSCTL_MI8953)
+#if IS_ENABLED(CONFIG_TOUCHSCREEN_PROCFS_MI8953)
 #include <linux/device.h>
  
 struct xiaomi_msm8953_touchscreen_operations_t {
