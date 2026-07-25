@@ -1,6 +1,8 @@
 #include <linux/device.h>
 #include <linux/module.h>
 #include <linux/sysctl.h>
+#include <linux/proc_fs.h>
+#include <linux/fs.h>
 #if IS_ENABLED(CONFIG_TOUCHSCREEN_DOUBLETAP2WAKE)
 #include <linux/input/doubletap2wake.h>
 #endif
@@ -33,7 +35,7 @@ int xiaomi_msm8953_touchscreen_register_operations(struct xiaomi_msm8953_touchsc
 EXPORT_SYMBOL(xiaomi_msm8953_touchscreen_register_operations);
 
 static int xiaomi_msm8953_touchscreen_toggle_enable_dt2w(struct ctl_table *table,
-					int write, void __user *buffer, size_t *lenp, loff_t *ppos)
+				int write, void __user *buffer, size_t *lenp, loff_t *ppos)
 {
 	int *valp = table->data;
 	int old_val = *valp;
@@ -77,7 +79,7 @@ static int xiaomi_msm8953_touchscreen_toggle_enable_dt2w(struct ctl_table *table
 }
 
 static int xiaomi_msm8953_touchscreen_toggle_disable_keys(struct ctl_table *table,
-					int write, void __user *buffer, size_t *lenp, loff_t *ppos)
+				int write, void __user *buffer, size_t *lenp, loff_t *ppos)
 {
 	int *valp = table->data;
 	int old_val = *valp;
@@ -110,10 +112,10 @@ static int xiaomi_msm8953_touchscreen_toggle_disable_keys(struct ctl_table *tabl
 	return rc;
 }
 
-/* file(s) in /proc/sys/dev/xiaomi_msm8953_touchscreen */
+/* file(s) in /proc/touchpanel */
 static struct ctl_table xiaomi_msm8953_touchscreen_files[] = {
 	{
-		.procname	= "enable_dt2w",
+		.procname	= "wakeup_gesture",
 		.data		= &xiaomi_msm8953_touchscreen_enable_dt2w_val,
 		.maxlen		= sizeof(int),
 		.mode		= 0666,
@@ -129,10 +131,10 @@ static struct ctl_table xiaomi_msm8953_touchscreen_files[] = {
 	{ }
 };
 
-/* dir in /proc/sys/dev */
-static struct ctl_table xiaomi_msm8953_touchscreen_dir[] = {
+/* /proc/touchpanel */
+static struct ctl_table xiaomi_msm8953_touchscreen_root_dir[] = {
 	{
-		.procname	= "xiaomi_msm8953_touchscreen",
+		.procname	= "touchpanel",
 		.maxlen		= 0,
 		.mode		= 0555,
 		.child		= xiaomi_msm8953_touchscreen_files,
@@ -140,18 +142,8 @@ static struct ctl_table xiaomi_msm8953_touchscreen_dir[] = {
 	{ }
 };
 
-/* /proc/sys/dev itself, in case that is not there yet */
-static struct ctl_table xiaomi_msm8953_touchscreen_root_dir[] = {
-	{
-		.procname	= "dev",
-		.maxlen		= 0,
-		.mode		= 0555,
-		.child		= xiaomi_msm8953_touchscreen_dir,
-	},
-	{ }
-};
-
 static struct ctl_table_header *xiaomi_msm8953_touchscreen_sysctl_header;
+static struct proc_dir_entry *xiaomi_msm8953_touchscreen_proc_dir;
 
 static int __init xiaomi_msm8953_touchscreen_sysctl_init(void)
 {
@@ -163,4 +155,12 @@ static int __init xiaomi_msm8953_touchscreen_sysctl_init(void)
 
 	return 0;
 }
+
+static void __exit xiaomi_msm8953_touchscreen_sysctl_exit(void)
+{
+	if (xiaomi_msm8953_touchscreen_sysctl_header)
+		unregister_sysctl_table(xiaomi_msm8953_touchscreen_sysctl_header);
+}
+
 module_init(xiaomi_msm8953_touchscreen_sysctl_init);
+module_exit(xiaomi_msm8953_touchscreen_sysctl_exit);
